@@ -26,6 +26,25 @@ document.addEventListener('DOMContentLoaded', ()=>{
   function onScroll(){ if(window.scrollY>80) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }
   onScroll(); window.addEventListener('scroll', onScroll);
 
+  // Nav-box fade based on scroll direction (only affects .nav-links.nav-boxed)
+  (function navFadeOnScroll(){
+    const navBox = document.querySelector('.nav-links.nav-boxed'); if(!navBox) return;
+    let lastY = window.scrollY; let ticking = false; let enabled = true;
+
+    function update(){ const y = window.scrollY; if(y <= 20){ navBox.classList.remove('nav-visible'); navBox.classList.remove('nav-hidden'); navBox.style.opacity=''; enabled = false; return; } // at top, reset and stop
+      enabled = true;
+      if(y > lastY + 5){ // scrolling down -> show
+        navBox.classList.add('nav-visible'); navBox.classList.remove('nav-hidden');
+      } else if(y < lastY - 5){ // scrolling up -> hide
+        navBox.classList.add('nav-hidden'); navBox.classList.remove('nav-visible');
+      }
+      lastY = y;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', ()=>{ if(ticking) return; ticking = true; requestAnimationFrame(update); });
+  })();
+
   // AOS-like simple init: add 'aos-animate' when element in viewport
   const aosEls = document.querySelectorAll('[data-aos]');
   const obs = new IntersectionObserver(entries=>{ entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('aos-animate'); obs.unobserve(en.target); } }) },{threshold:0.12});

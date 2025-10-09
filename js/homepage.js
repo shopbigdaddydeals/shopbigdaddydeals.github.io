@@ -20,7 +20,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
     setFooterFlag(data);
   });
 
+  let sloganAnimated = false;
   function showSlogan(){ sloganWrap.setAttribute('aria-hidden','false'); sloganWrap.classList.add('visible');
+    // trigger the entrance animation once for the slogan h1
+    if(slogan && !sloganAnimated){ slogan.classList.add('slogan-animate'); sloganAnimated = true; }
     // After a short delay, enable scroll fade (fade out when scrolled)
     setTimeout(()=>{ window.addEventListener('scroll', sloganFadeOnScroll); }, 800);
   }

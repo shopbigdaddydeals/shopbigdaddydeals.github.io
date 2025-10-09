@@ -100,6 +100,11 @@ body.addcart-anim::after{content:'';position:fixed;right:24px;bottom:24px;width:
 .nav-links.nav-boxed a{padding:.4rem .6rem;border-radius:8px}
 .nav-links.nav-boxed a:hover{background:rgba(0,0,0,0.03)}
 .site-nav .nav-actions{margin-left:8px}
+
+/* Nav fade behavior: nav-boxed stays sticky so opacity changes won't reflow layout */
+.nav-links.nav-boxed{position:sticky;top:12px;z-index:80;transition:opacity .5s ease;opacity:0;pointer-events:none}
+.nav-links.nav-boxed.nav-visible{opacity:1;pointer-events:auto}
+.nav-links.nav-boxed.nav-hidden{opacity:0;pointer-events:none}
 .brand{display:flex;gap:.5rem;align-items:center;text-decoration:none;color:inherit}
 .brand-logo{height:60px;width:auto;display:block;object-fit:contain;transition:transform .22s cubic-bezier(.2,.9,.2,1)}
 .brand{display:flex;gap:.5rem;align-items:center;min-height:60px}

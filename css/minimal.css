@@ -38,6 +38,11 @@ p,small,li,span{font-weight:400}
 .slogan-wrap h1{font-weight:600;font-size:1.6rem;max-width:900px;margin:0 auto;color:var(--text);opacity:0;transform:translateY(6px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.9,.2,1)}
 .slogan-wrap.visible h1{opacity:1;transform:none}
 
+/* Slogan entrance animation: fade in from right once */
+.slogan-entrance{opacity:0;transform:translateX(30px);}
+.slogan-animate{animation: sloganIn 1s ease-in-out forwards}
+@keyframes sloganIn{0%{opacity:0;transform:translateX(30px)}100%{opacity:1;transform:translateX(0)}}
+
 /* Photo slideshow */
 .photo-slideshow{padding:2rem 0;background:var(--white)}
 .photo-slideshow .slideshow-inner{position:relative;height:320px;border-radius:12px;overflow:hidden}
