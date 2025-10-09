@@ -19,7 +19,7 @@ What's included
 - `pages/` — additional pages: `shop.html`, `product.html`, `cart.html`, `checkout.html`, `login.html`, `signup.html`, `about.html`, `contact.html`, `privacy.html`, `terms.html`
 - `css/` — `main.css` and `responsive.css` (layout and responsive styles)
 - `js/` — `products.js` (sample product data), `cart.js` (localStorage cart), `validation.js` (form checks), `main.js` (UI interactions)
-- `images/` — SVG placeholder assets (logo, product placeholders, favicon)
+ - `images/` — SVG/PNG placeholder assets (logo, product placeholders, favicon.png)
 
 Features
 - Responsive, modern, minimalist design (black, white, gold color accents)
