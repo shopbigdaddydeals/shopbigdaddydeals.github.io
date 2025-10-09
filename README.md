@@ -1,6 +1,5 @@
 What's new in this release
 - Luxury redesign: soft off-white palette, Century Gothic typography, and refined spacing.
-- Hero: background video support with graceful fallback and animated CTA.
 - Animations: AOS-like reveals and subtle GSAP-style interactions (vanilla IntersectionObserver-driven).
 - Products: premium curated product data, quick view modal, wishlist, and animated add-to-cart.
 - Cart & Wishlist persisted in `localStorage`.
@@ -8,7 +7,7 @@ What's new in this release
 Note: The cart now persists product options (size/color) using composite keys in localStorage. The product page uses a fly-to-cart animation when GSAP is available.
 
 Notes about included extras
-- `assets/videos/hero-loop.mp4` is referenced by the hero; provide a short looped MP4 for best experience. The site gracefully hides the video if not present.
+- The project previously supported optional hero/background videos. If you add video assets, ensure they are optimized and tested for autoplay policies.
 - For production, replace JS-based modals and client-side cart with secure server-backed endpoints and payment providers.
 # BigDaddy Deals — Static E‑commerce Template
 

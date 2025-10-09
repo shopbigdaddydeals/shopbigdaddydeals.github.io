@@ -94,6 +94,12 @@ body.addcart-anim::after{content:'';position:fixed;right:24px;bottom:24px;width:
 /* Nav */
 .site-nav{background:transparent;position:sticky;top:0;z-index:60;border-bottom:0}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
+
+/* Boxed navbar variant applied site-wide: off-white background, bold black border, fully rounded */
+.site-nav.boxed{background:var(--page-bg);border:3px solid #000;border-radius:999px;padding:8px;margin:12px;backdrop-filter:none}
+.site-nav.boxed .nav-inner{padding:0 1rem}
+.site-nav.boxed .nav-inner{align-items:center}
+.site-nav.boxed .nav-links a{padding:.6rem .5rem}
 .brand{display:flex;gap:.5rem;align-items:center;text-decoration:none;color:inherit}
 .brand-logo{height:60px;width:auto;display:block;object-fit:contain;transition:transform .22s cubic-bezier(.2,.9,.2,1)}
 .brand{display:flex;gap:.5rem;align-items:center;min-height:60px}

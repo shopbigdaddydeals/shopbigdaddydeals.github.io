@@ -1,4 +1,4 @@
-// homepage.js - logic for country picker, slogan behavior, videos and model photo reveals
+// homepage.js - logic for country picker, slogan behavior, and model photo reveals
 document.addEventListener('DOMContentLoaded', ()=>{
   const countryPicker = document.getElementById('countryPicker');
   const countrySelect = document.getElementById('countrySelect');
@@ -27,23 +27,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   function sloganFadeOnScroll(){ const rect = sloganWrap.getBoundingClientRect(); if(rect.bottom < 60){ sloganWrap.classList.remove('visible'); window.removeEventListener('scroll', sloganFadeOnScroll); } }
 
-  // Videos placeholders: create 3 video elements (placeholders)
-  const videosRoot = document.createElement('section'); videosRoot.className='videos-grid container';
-  for(let i=0;i<3;i++){
-    const vwrap = document.createElement('div'); vwrap.className='video-placeholder';
-    const v = document.createElement('video'); v.autoplay=true; v.muted=true; v.loop=true; v.playsInline=true; v.setAttribute('aria-hidden','true'); v.setAttribute('playsinline','');
-    // Use provided video for the first placeholder
-    if(i===0){
-      const src=document.createElement('source'); src.src='/assets/videos/your-paragraph-text.mp4'; src.type='video/mp4'; v.appendChild(src);
-      // preload metadata and provide a simple poster (fallback to an existing image)
-      v.preload = 'metadata';
-      v.poster = '/images/hero-product.svg';
-      // try to start loading and play (some browsers require play() on user interaction or when visible)
-      try{ v.load(); const p = v.play(); if(p && p.catch){ p.catch(err=>{ console.debug('Video play prevented (will attempt on visibility):', err); }); }}catch(e){ console.debug('video load/play error', e); }
-    }
-    vwrap.appendChild(v); videosRoot.appendChild(vwrap);
-  }
-  document.querySelector('body').insertBefore(videosRoot, document.querySelector('.featured'));
 
   // Model photos section
   const modelsSection = document.createElement('section'); modelsSection.className='models';
@@ -51,15 +34,44 @@ document.addEventListener('DOMContentLoaded', ()=>{
   for(let i=1;i<=6;i++){ const it=document.createElement('div'); it.className='model-item'; const img=document.createElement('img'); img.className='lazy'; img.dataset.src='/images/prod'+((i%8)+1)+'.svg'; img.alt='Model '+i; it.appendChild(img); const cap=document.createElement('div'); cap.className='model-caption'; cap.textContent = 'Model '+i; it.appendChild(cap); mg.appendChild(it);} modelsSection.appendChild(mg);
   document.querySelector('body').insertBefore(modelsSection, document.querySelector('#newsletter'));
 
-  // Intersection observer for videos and models to add reveal class
-  const io = new IntersectionObserver(entries=>{ entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('visible'); const v = en.target.querySelector('video'); if(v){ // ensure video plays when visible
-        if(v.paused){ v.play().catch(err=>{ console.debug('video play blocked until user interaction', err); }); }
+  // Intersection observer for models and slogan to add reveal class
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        en.target.classList.add('visible');
       }
-    }
-  }) },{threshold:0.18});
-  document.querySelectorAll('.video-placeholder,.model-item,.slogan-wrap').forEach(el=>io.observe(el));
+    })
+  },{threshold:0.18});
+  document.querySelectorAll('.model-item,.slogan-wrap').forEach(el=>io.observe(el));
 
   // footer flag helper
   function setFooterFlag(data){ const existing = document.querySelector('.footer-flag'); if(existing) existing.remove(); const f = document.createElement('div'); f.className='footer-flag'; f.textContent = data.name + ' ' + (data.flag||''); document.body.appendChild(f); }
+
+  // Photo slideshow initialization
+  (function initSlideshow(){
+    const wrap = document.getElementById('photoSlideshow'); if(!wrap) return;
+    const slides = Array.from(wrap.querySelectorAll('.slide'));
+    let idx = slides.findIndex(s=>s.classList.contains('active')); if(idx<0) idx=0; let interval = null; const delay = 3500;
+
+    function goTo(n){ slides.forEach((s,i)=>{ s.classList.toggle('active', i===n); }); idx = n; }
+    function next(){ goTo((idx+1) % slides.length); }
+    function prev(){ goTo((idx-1+slides.length) % slides.length); }
+
+    // controls
+    const prevBtn = wrap.querySelector('.prev'); const nextBtn = wrap.querySelector('.next');
+    if(prevBtn) prevBtn.addEventListener('click', ()=>{ pause(); prev(); restart(); });
+    if(nextBtn) nextBtn.addEventListener('click', ()=>{ pause(); next(); restart(); });
+
+    function start(){ interval = setInterval(next, delay); }
+    function pause(){ if(interval){ clearInterval(interval); interval=null; } }
+    function restart(){ pause(); start(); }
+
+    // pause on hover/focus for accessibility
+    wrap.addEventListener('mouseenter', pause); wrap.addEventListener('mouseleave', restart);
+    wrap.addEventListener('focusin', pause); wrap.addEventListener('focusout', restart);
+
+    // start
+    start();
+  })();
 
 });
