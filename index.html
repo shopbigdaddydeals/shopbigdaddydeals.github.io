@@ -15,7 +15,7 @@
 
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/neon.css">
+  <link rel="stylesheet" href="css/minimal.css">
   </head>
   <body>
 <!-- PRELOADER -->
@@ -52,25 +52,28 @@
       </div>
     </header>
 
-    <!-- Neon / Hype Hero -->
-    <section class="hero neon-hero" id="hero">
-      <div class="hero-bg" id="heroBg">
-        <canvas id="neonCanvas"></canvas>
-        <div class="glitch-layer">WHERE HYPE MEETS DEALS 💸🔥</div>
-      </div>
+    <!-- Minimalist Homepage Hero -->
+    <section class="hero minimal-hero" id="hero">
       <div class="hero-inner container">
-        <h1 class="neon-title">WHERE HYPE MEETS DEALS <span class="emoji">💸🔥</span></h1>
-        <p class="neon-sub">Fast drops. Loud looks. Streetwear for the now.</p>
-        <div class="hero-buttons">
-          <a class="btn-hype" href="pages/shop.html">SHOP THE HYPE</a>
-          <a class="btn-drip" href="pages/shop.html">DRIP NOW</a>
+        <!-- Country selector shown on first load -->
+        <div id="countryPicker" class="country-picker" aria-hidden="false">
+          <h2 class="cp-title">Choose your country</h2>
+          <select id="countrySelect" class="country-select" aria-label="Select your country">
+            <option value="us" data-flag="🇺🇸">United States</option>
+            <option value="in" data-flag="🇮🇳">India</option>
+            <option value="gb" data-flag="🇬🇧">United Kingdom</option>
+            <option value="au" data-flag="🇦🇺">Australia</option>
+            <option value="ca" data-flag="🇨🇦">Canada</option>
+          </select>
+          <button id="countryConfirm" class="btn-cta">Continue</button>
+        </div>
+
+        <!-- Slogan area (fades in then out on scroll) -->
+        <div id="sloganWrap" class="slogan-wrap offwhite" aria-hidden="true">
+          <h1 id="brandSlogan">BigDaddy Deals | Your Deal. Your Happiness. Right Here.</h1>
         </div>
       </div>
-      <div class="hero-wave"></div>
     </section>
-
-    <!-- custom cursor -->
-    <div id="cursor" class="cursor"></div>
 
     <!-- Featured products preview -->
     <section class="featured container" id="featured">
@@ -130,6 +133,7 @@
     <script src="js/cart.js" defer></script>
     <script src="js/validation.js" defer></script>
   <script src="js/search.js" defer></script>
+    <script src="js/homepage.js" defer></script>
     <script src="js/main.js" defer></script>
   </body>
 </html>

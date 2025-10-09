@@ -111,9 +111,7 @@ window.addEventListener('load', ()=>{
     }
   }
 
-  // custom cursor movement
-  const cursor = document.getElementById('cursor');
-  if(cursor){ document.addEventListener('mousemove', e=>{ cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; }); }
+  // custom cursor removed for minimalist design — use system cursor
 
   // simple neon canvas background (moving gradient blobs)
   const canvas = document.getElementById('neonCanvas');
