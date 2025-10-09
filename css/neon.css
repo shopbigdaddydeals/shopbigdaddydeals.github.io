@@ -23,7 +23,15 @@ body{background:var(--bg-dark);color:#fff}
 
 /* Header search */
 .search-wrap{display:flex;align-items:center;gap:.5rem;background:rgba(255,255,255,0.03);padding:.25rem .5rem;border-radius:999px;transition:all .28s ease;backdrop-filter:blur(4px)}
-.search-wrap:hover{background:rgba(255,255,255,0.06);transform:scale(1.02)}
-.search-wrap input{background:transparent;border:none;color:#fff;outline:none;width:120px;transition:width .35s ease}
-.search-wrap:hover input{width:220px}
+.search-wrap.focused{background:rgba(255,255,255,0.08);transform:scale(1.02)}
+.search-wrap input{background:transparent;border:none;color:#fff;outline:none;width:120px;transition:width .32s cubic-bezier(.2,.9,.2,1)}
+.search-wrap.focused input{width:240px}
 .search-icon{opacity:.9}
+
+/* Nav link underline glide (Nike-like) */
+.nav-links a{position:relative;padding:6px 4px;text-decoration:none;color:inherit;display:inline-block}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,var(--neon-blue),var(--neon-pink));transition:width .36s cubic-bezier(.2,.9,.2,1)}
+.nav-links a:hover::after{width:100%}
+
+/* Navbar backdrop blur when scrolled */
+.site-nav.scrolled{backdrop-filter:blur(6px);background:rgba(4,4,6,0.86);box-shadow:0 8px 30px rgba(0,0,0,.5)}

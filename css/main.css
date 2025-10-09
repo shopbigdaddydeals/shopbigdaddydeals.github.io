@@ -82,12 +82,17 @@ body.addcart-anim::after{content:'';position:fixed;right:24px;bottom:24px;width:
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* Nav */
-.site-nav{background:var(--bg);position:sticky;top:0;z-index:50;border-bottom:1px solid #eee}
+.site-nav{background:transparent;position:sticky;top:0;z-index:60;border-bottom:0}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
 .brand{display:flex;gap:.5rem;align-items:center;text-decoration:none;color:inherit}
 .logo-img{height:36px}
 .nav-links a{margin:0 .6rem;text-decoration:none;color:#111}
 .nav-actions{display:flex;gap:.5rem;align-items:center}
+.search-wrap input{color:inherit}
+
+/* Images: lazy helper */
+.lazy{opacity:0;transition:opacity .45s ease}
+.lazy.loaded{opacity:1}
 .hamburger{display:none}
 
 /* Hero */

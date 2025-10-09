@@ -20,14 +20,14 @@
   <body>
     <!-- Preloader (BDD logo with fade loop) -->
     <div id="preloader" class="preloader" aria-hidden="false" role="status" aria-label="Loading">
-      <img src="images/logo.png" alt="Big Daddy Deals logo" id="preloaderLogo" class="preloader-logo">
+      <img data-src="/images/logo.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Big Daddy Deals logo" id="preloaderLogo" class="preloader-logo lazy">
     </div>
 
     <!-- Header / Navbar -->
     <header class="site-nav">
       <div class="nav-inner container">
         <a class="brand" href="index.html">
-          <img src="images/logo.png" alt="BigDaddy Deals logo" class="logo-img" onerror="this.onerror=null;this.src='images/logo.svg';">
+          <img class="lazy" data-src="/images/logo.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="BigDaddy Deals logo" class="logo-img" onerror="this.onerror=null;this.src='/images/logo.svg';">
           <span class="brand-text">BigDaddy <small>Deals</small></span>
         </a>
         <nav class="nav-links" id="mainNav">
@@ -38,8 +38,9 @@
           <a href="pages/login.html" class="btn-link">Login</a>
         </nav>
         <div class="nav-actions">
-          <div class="search-wrap">
-            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#fff" d="M21 20l-4.35-4.35A7 7 0 1 0 18 14a7 7 0 0 0-1.35-4.35L21 20zM4 10a6 6 0 1 1 6 6A6 6 0 0 1 4 10z"></path></svg>
+          <div class="search-wrap" id="headerSearchWrap">
+            <!-- Minimal modern magnifier icon -->
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6" /><path d="M20 20l-3.6-3.6" stroke-linecap="round"/></g></svg>
             <input id="headerSearch" type="search" placeholder="Search BDD" aria-label="Search products">
           </div>
           <a href="pages/cart.html" class="icon-btn">🛒 <span id="navCartCount" class="badge">0</span></a>
@@ -92,7 +93,7 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div>
-          <img src="images/logo.png" alt="BigDaddy Deals" style="height:34px" onerror="this.onerror=null;this.src='images/logo-footer.svg';">
+          <img class="lazy" data-src="/images/logo.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="BigDaddy Deals" style="height:34px" onerror="this.onerror=null;this.src='/images/logo-footer.svg';">
           <p class="muted">Premium deals curated daily. Secure checkout &amp; fast delivery.</p>
         </div>
         <div>

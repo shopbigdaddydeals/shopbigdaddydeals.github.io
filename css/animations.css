@@ -20,8 +20,17 @@
 }
 
 	/* Preloader logo fade loop */
-	.preloader{background:#faf7f2;position:fixed;inset:0;z-index:99999}
+	.preloader{background:#f9f9f9;position:fixed;inset:0;z-index:99999}
 	.preloader-logo{width:120px;height:auto;opacity:0;animation:logoPulse 1.6s ease-in-out infinite}
 	@keyframes logoPulse{0%{opacity:0;transform:scale(.95)}30%{opacity:1;transform:scale(1)}70%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.95)}}
 	.preloader.fade-out{opacity:0;transition:opacity .6s ease;pointer-events:none}
+
+/* Page transition overlay (used for smooth fade between pages) */
+.page-transition{position:fixed;inset:0;z-index:99998;background:var(--page-bg,#f9f9f9);opacity:0;pointer-events:none;transition:opacity .6s ease}
+.page-transition.active{opacity:1;pointer-events:auto}
+
+@media (prefers-reduced-motion: reduce){
+	.page-transition{transition:none}
+	.preloader-logo, .preloader{animation-duration:0s;animation:none}
+}
 

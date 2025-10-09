@@ -47,6 +47,51 @@ window.addEventListener('load', ()=>{
   }
 });
 
+/* Page transition overlay and navigation interception */
+(function pageTransitions(){
+  // create overlay element
+  const overlay = document.createElement('div'); overlay.className = 'page-transition'; overlay.id = 'pageTransition'; document.body.appendChild(overlay);
+
+  // helpers to determine same-origin, internal links, and reduced motion
+  function isInternalLink(a){ try{ const url = new URL(a.href, location.href); return url.origin === location.origin; }catch(e){return false;} }
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Animate out then navigate
+  function navigateWithTransition(href){ if(prefersReduced){ location.href = href; return; }
+    if(window.gsap){ gsap.to('#pageTransition',{duration:0.45,opacity:1, pointerEvents:'auto', ease:'power2.out', onComplete:()=>{ location.href = href; }}); }
+    else { overlay.classList.add('active'); setTimeout(()=> location.href = href, 400); }
+  }
+
+  // intercept clicks on links
+  document.addEventListener('click', e=>{
+    const a = e.target.closest('a'); if(!a) return; // not a link
+    // allow downloads, mailto, tel, blanks, external
+    if(a.target === '_blank' || a.hasAttribute('download') || a.href.startsWith('mailto:') || a.href.startsWith('tel:')) return;
+    if(!isInternalLink(a)) return;
+    // let anchor links scroll normally
+    if(a.hash && (a.pathname === location.pathname)) return;
+
+    e.preventDefault(); const href = a.href;
+    navigateWithTransition(href);
+  });
+
+  // On page show (back/forward), fade overlay out
+  window.addEventListener('pageshow', ()=>{
+    if(prefersReduced) return; if(window.gsap){ gsap.to('#pageTransition',{duration:0.45,opacity:0,pointerEvents:'none',ease:'power2.in'}); }
+    else { overlay.classList.remove('active'); }
+  });
+})();
+
+// Header search focus behavior (expands input)
+(function headerSearchFocus(){
+  const input = document.getElementById('headerSearch');
+  const wrap = document.getElementById('headerSearchWrap');
+  if(!input || !wrap) return;
+  input.addEventListener('focus', ()=>wrap.classList.add('focused'));
+  input.addEventListener('blur', ()=>wrap.classList.remove('focused'));
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' || e.key === 'Esc'){ if(document.activeElement === input) input.blur(); } });
+})();
+
 // Dynamically load GSAP + ScrollTrigger and initialize hero animations + custom cursor
 (function loadGsap(){
   function loadScript(src, cb){ const s=document.createElement('script'); s.src=src; s.onload=cb; document.head.appendChild(s); }
@@ -73,5 +118,16 @@ window.addEventListener('load', ()=>{
   // simple neon canvas background (moving gradient blobs)
   const canvas = document.getElementById('neonCanvas');
   if(canvas){ const ctx = canvas.getContext('2d'); function resize(){ canvas.width = canvas.clientWidth; canvas.height = canvas.clientHeight; } resize(); window.addEventListener('resize', resize);
+  // Lightweight lazy-loading for images using data-src and .lazy class
+  (function lazyLoadImages(){
+    if(!('IntersectionObserver' in window)){
+      // eager load
+      document.querySelectorAll('img[data-src]').forEach(img=>{ img.src = img.dataset.src; img.classList.add('loaded'); });
+      return;
+    }
+    const imgs = document.querySelectorAll('img.lazy[data-src]');
+    const io = new IntersectionObserver(entries=>{ entries.forEach(en=>{ if(en.isIntersecting){ const img = en.target; img.src = img.dataset.src; img.addEventListener('load', ()=>img.classList.add('loaded')); io.unobserve(img); } }) },{rootMargin:'200px 0px'});
+    imgs.forEach(i=>io.observe(i));
+  })();
     let t=0; function draw(){ t+=0.01; ctx.clearRect(0,0,canvas.width,canvas.height); const grd = ctx.createLinearGradient(0,0,canvas.width,canvas.height); grd.addColorStop(0,'rgba(0,230,255,' + (0.2 + Math.abs(Math.sin(t))*0.2) + ')'); grd.addColorStop(1,'rgba(255,45,149,' + (0.12 + Math.abs(Math.cos(t))*0.12) + ')'); ctx.fillStyle = grd; ctx.fillRect(0,0,canvas.width,canvas.height); requestAnimationFrame(draw); } draw(); }
 })();
