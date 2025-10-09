@@ -1,0 +1,10 @@
+/* animations.css - subtle reveal and motion styles */
+.aos-init{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.9,.2,1)}
+.aos-animate{opacity:1;transform:translateY(0)}
+
+/* small fade classes */
+.fade-in{opacity:0;transform:translateY(6px);transition:all .5s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+.preloader{background:#fff;display:flex;align-items:center;justify-content:center}
+.spinner{width:56px;height:56px;border-radius:50%;border:6px solid #f1f1f1;border-top-color:var(--accent);animation:spin 1s linear infinite}

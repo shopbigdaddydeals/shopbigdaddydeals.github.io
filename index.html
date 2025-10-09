@@ -7,13 +7,14 @@
     <meta name="description" content="BigDaddy Deals — curated premium deals on electronics, fashion, home and more." />
     <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 5 (optional, used for quick responsive utilities) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
   </head>
   <body>
     <!-- Preloader -->
@@ -44,20 +45,24 @@
     </header>
 
     <!-- Hero -->
-    <section class="hero container">
-      <div class="hero-left">
-        <h1 class="hero-title">Premium deals. Everyday savings.</h1>
-        <p class="hero-sub">Discover top products handpicked for value and quality. New drops daily.</p>
-        <div class="hero-cta">
-          <a href="pages/shop.html" class="btn-cta">Shop Now</a>
-          <a href="#newsletter" class="btn-ghost">Subscribe</a>
-        </div>
-        <div class="hero-animated">
-          <span id="typed">Electronics</span>
+    <section class="hero hero-full">
+      <div class="hero-media" id="heroMedia">
+        <!-- Background video / fallback image -->
+        <video id="heroVideo" autoplay muted loop playsinline poster="images/hero-product.svg">
+          <source src="assets/videos/hero-loop.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content container">
+        <h1 class="hero-title" data-aos="fade-up">Style Speaks Before You Do.</h1>
+        <p class="hero-sub" data-aos="fade-up" data-aos-delay="120">A modern collection blending streetwear edge with luxury craft.</p>
+        <div class="hero-cta" data-aos="fade-up" data-aos-delay="240">
+          <a href="pages/shop.html" class="btn-cta btn-animated">Shop Now</a>
+          <a href="#featured" class="btn-ghost">Explore</a>
         </div>
       </div>
-      <div class="hero-right">
-        <img src="images/hero-product.svg" alt="Featured product"/>
+      <div class="hero-scroll">
+        <a href="#featured" class="scroll-down" aria-label="Scroll to featured">Scroll</a>
       </div>
     </section>
 

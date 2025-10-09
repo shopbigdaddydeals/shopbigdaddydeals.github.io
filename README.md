@@ -1,3 +1,13 @@
+What's new in this release
+- Luxury redesign: soft off-white palette, Playfair Display headings, and refined spacing.
+- Hero: background video support with graceful fallback and animated CTA.
+- Animations: AOS-like reveals and subtle GSAP-style interactions (vanilla IntersectionObserver-driven).
+- Products: premium curated product data, quick view modal, wishlist, and animated add-to-cart.
+- Cart & Wishlist persisted in `localStorage`.
+
+Notes about included extras
+- `assets/videos/hero-loop.mp4` is referenced by the hero; provide a short looped MP4 for best experience. The site gracefully hides the video if not present.
+- For production, replace JS-based modals and client-side cart with secure server-backed endpoints and payment providers.
 # BigDaddy Deals — Static E‑commerce Template
 
 This repository contains a multi-page, responsive static e‑commerce template for a fictional company "BigDaddy Deals". It's built with HTML5, CSS3, and vanilla JavaScript (optionally Bootstrap 5 is included for utilities). Use this as a starting point for a real storefront.

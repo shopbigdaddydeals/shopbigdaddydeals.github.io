@@ -1,13 +1,13 @@
 /* products.js - sample product data and render helpers */
 const PRODUCTS = [
-  {id:101,title:'Wireless Headphones',price:79.99,category:'electronics',desc:'Comfortable, long battery life',img:'../images/prod1.svg'},
-  {id:102,title:'Smart Watch',price:129.99,category:'electronics',desc:'Track activity & notifications',img:'../images/prod2.svg'},
-  {id:103,title:'Copper Kettle',price:34.99,category:'home',desc:'Fast boiling stainless steel',img:'../images/prod3.svg'},
-  {id:104,title:'Memory Foam Pillow',price:24.99,category:'home',desc:'Sleep better with memory foam',img:'../images/prod4.svg'},
-  {id:105,title:'Classic Tee',price:19.99,category:'fashion',desc:'Soft cotton, multiple colors',img:'../images/prod5.svg'},
-  {id:106,title:'Running Sneakers',price:69.99,category:'fashion',desc:'Lightweight and durable',img:'../images/prod6.svg'},
-  {id:107,title:'Puzzle Set',price:14.99,category:'toys',desc:'Family fun puzzle',img:'../images/prod7.svg'},
-  {id:108,title:'Blocks Set',price:29.99,category:'toys',desc:'Creative building blocks',img:'../images/prod8.svg'}
+  {id:201,title:'BDD Luxe Runner',price:189.00,category:'mens',desc:'Performance runner with premium knit and signature sole.',img:'../images/prod1.svg',colors:['Black','Ivory'],sizes:['7','8','9','10','11']},
+  {id:202,title:'Heritage Trench Coat',price:399.00,category:'womens',desc:'Tailored stormproof trench with classic cut.',img:'../images/prod2.svg',colors:['Camel','Black'],sizes:['S','M','L']},
+  {id:203,title:'Monogram Leather Bag',price:749.00,category:'accessories',desc:'Limited edition leather tote with embossed BDD monogram.',img:'../images/prod3.svg',colors:['Tan'],sizes:[]},
+  {id:204,title:'Playfair Knit Sweater',price:129.00,category:'womens',desc:'Soft knit with dropped shoulder and refined hem.',img:'../images/prod4.svg',colors:['Ivory','Charcoal'],sizes:['S','M','L']},
+  {id:205,title:'Classic Tee (Premium)',price:49.00,category:'mens',desc:'Pima cotton tee with subtle logo.',img:'../images/prod5.svg',colors:['White','Black'],sizes:['S','M','L','XL']},
+  {id:206,title:'Gold Accent Cap',price:59.00,category:'accessories',desc:'Adjustable cap with gold hardware.',img:'../images/prod6.svg',colors:['Black'],sizes:[]},
+  {id:207,title:'Everyday Denim',price:159.00,category:'mens',desc:'Japanese selvedge denim with refined fit.',img:'../images/prod7.svg',colors:['Indigo'],sizes:['30','32','34','36']},
+  {id:208,title:'Silk Scarf',price:89.00,category:'accessories',desc:'Hand-rolled silk scarf with printed motif.',img:'../images/prod8.svg',colors:['Cream'],sizes:[]}
 ];
 
 function findProductById(id){return PRODUCTS.find(p=>p.id===Number(id));}
@@ -16,14 +16,17 @@ function renderProductCard(p){
   const el = document.createElement('article');
   el.className = 'product-card';
   el.innerHTML = `
-    <div class="product-thumb"><img src="${p.img}" alt="${p.title}"/></div>
+    <div class="product-thumb">
+      <img src="${p.img}" alt="${p.title}"/>
+      <div class="actions-overlay overlay">
+        <button class="quick-view" data-id="${p.id}">Quick View</button>
+        <button class="wish-btn" data-id="${p.id}">♡</button>
+        <button class="add-to-cart" data-id="${p.id}">Add</button>
+      </div>
+    </div>
     <h3 class="product-title">${p.title}</h3>
     <div class="product-price">$${p.price.toFixed(2)}</div>
     <p class="muted">${p.desc}</p>
-    <div class="product-actions">
-      <button class="btn-cta add-to-cart" data-id="${p.id}">Add to cart</button>
-      <a class="btn-link" href="product.html?id=${p.id}">View</a>
-    </div>
   `;
   return el;
 }
@@ -67,4 +70,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
       addToCart(p.id); alert('Added to cart');
     });
   }
+
+  // Global handlers: quick view, wishlist, add-to-cart
+  document.addEventListener('click', e=>{
+    const q = e.target.closest('.quick-view'); if(q){ const id=q.dataset.id; openQuickView(id); }
+    const w = e.target.closest('.wish-btn'); if(w){ toggleWish(w.dataset.id); }
+    const atc = e.target.closest('.add-to-cart'); if(atc){ addToCartAnimated(atc.dataset.id); }
+  });
+
+  function openQuickView(id){ const p = findProductById(id); const modal = document.createElement('div'); modal.className='quick-modal'; modal.innerHTML=`<div class='box'><h3>${p.title}</h3><img src='${p.img}' style='max-width:280px'/><p>${p.desc}</p><div style="display:flex;gap:.5rem;margin-top:.5rem"><button class='btn-cta' onclick="addToCartAnimated(${p.id})">Add to cart</button><button onclick='this.closest(".quick-modal").remove()' class='btn-link'>Close</button></div></div>`; document.body.appendChild(modal); }
 });

@@ -1,7 +1,7 @@
 /* main.js - UI interactions and small enhancements */
 document.addEventListener('DOMContentLoaded', ()=>{
   // Preloader
-  const pre = document.getElementById('preloader'); if(pre) setTimeout(()=>pre.style.display='none',600);
+  const pre = document.getElementById('preloader'); if(pre) setTimeout(()=>pre.style.display='none',700);
 
   // Year
   const y = document.getElementById('currentYear'); if(y) y.textContent = new Date().getFullYear();
@@ -21,4 +21,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   // Newsletter submit (demo)
   const nf = document.getElementById('newsletterForm'); if(nf){ nf.addEventListener('submit', e=>{ e.preventDefault(); alert('Thanks for subscribing!'); nf.reset(); }); }
+
+  // Navbar change on scroll
+  const nav = document.querySelector('.site-nav');
+  function onScroll(){ if(window.scrollY>80) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }
+  onScroll(); window.addEventListener('scroll', onScroll);
+
+  // AOS-like simple init: add 'aos-animate' when element in viewport
+  const aosEls = document.querySelectorAll('[data-aos]');
+  const obs = new IntersectionObserver(entries=>{ entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('aos-animate'); obs.unobserve(en.target); } }) },{threshold:0.12});
+  aosEls.forEach(el=>{ el.classList.add('aos-init'); obs.observe(el); });
+
+  // Hero video fallback: hide video if not supported
+  const hv = document.getElementById('heroVideo'); if(hv){ hv.addEventListener('error', ()=>{ hv.style.display='none'; document.querySelector('.hero-overlay').style.background='linear-gradient(90deg,rgba(0,0,0,.35),rgba(0,0,0,.05))' }) }
 });
