@@ -8,3 +8,14 @@
 
 .preloader{background:#fff;display:flex;align-items:center;justify-content:center}
 .spinner{width:56px;height:56px;border-radius:50%;border:6px solid #f1f1f1;border-top-color:var(--accent);animation:spin 1s linear infinite}
+
+/* Glitch animation */
+@keyframes glitch-anim{
+	0%{transform:translate(0,0) skew(0deg)}
+	20%{transform:translate(-2px,1px) skew(-1deg)}
+	40%{transform:translate(2px,-1px) skew(1deg)}
+	60%{transform:translate(-1px,1px) skew(-.5deg)}
+	80%{transform:translate(1px,-1px) skew(.5deg)}
+	100%{transform:translate(0,0) skew(0deg)}
+}
+

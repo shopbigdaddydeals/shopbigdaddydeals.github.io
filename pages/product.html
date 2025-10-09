@@ -9,20 +9,25 @@
 <body>
   <header class="site-nav container"><a href="../index.html" class="brand">BigDaddy Deals</a></header>
   <main class="container product-page">
-    <div class="product-detail">
+    <div class="product-detail grid-2">
       <div class="gallery">
-        <img id="pdImage" src="../images/product-placeholder.svg" alt="Product image">
+        <div class="main-image-wrap">
+          <img id="pdImage" class="main-image" src="../images/product-placeholder.svg" alt="Product image">
+          <div id="zoomLens" class="zoom-lens" aria-hidden="true"></div>
+        </div>
+        <div id="pdThumbs" class="thumbs"></div>
       </div>
       <div class="details">
         <h1 id="pdTitle">Product Title</h1>
         <p id="pdDesc">Product description goes here. Feature bullets and details.</p>
         <div class="price" id="pdPrice">$0.00</div>
         <div class="options">
-          <label>Size <select id="pdSize"><option>S</option><option>M</option><option>L</option></select></label>
-          <label>Color <select id="pdColor"><option>Black</option><option>Gold</option></select></label>
+          <div class="option-row"><label>Size</label><div id="pdSizes" class="pd-sizes"></div></div>
+          <div class="option-row"><label>Color</label><div id="pdColors" class="pd-colors"></div></div>
         </div>
         <div class="actions">
-          <button id="addToCartBtn" class="btn-cta">Add to cart</button>
+          <button id="addToCartBtn" class="btn-hype">Add to cart</button>
+          <button id="wishBtnProd" class="btn-link">♡ Wishlist</button>
         </div>
       </div>
     </div>

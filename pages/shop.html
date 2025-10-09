@@ -14,19 +14,22 @@
 
     <main class="container shop-page">
       <div class="page-head">
-        <h1>Shop</h1>
+        <h1>Shop The Hype</h1>
         <div class="filters">
           <select id="shopCategory">
             <option value="all">All</option>
-            <option value="electronics">Electronics</option>
-            <option value="home">Home</option>
-            <option value="fashion">Fashion</option>
-            <option value="toys">Toys</option>
+            <option value="mens">Men</option>
+            <option value="womens">Women</option>
+            <option value="accessories">Accessories</option>
           </select>
           <input id="shopSearch" type="search" placeholder="Search products...">
         </div>
       </div>
-      <div id="shopGrid" class="grid products-grid"></div>
+
+      <div id="shopGrid" class="masonry-grid" aria-live="polite"></div>
+      <div class="load-more-wrap">
+        <button id="loadMoreBtn" class="btn-drip">Load More</button>
+      </div>
     </main>
 
     <script src="../js/products.js" defer></script>

@@ -35,3 +35,32 @@ document.addEventListener('DOMContentLoaded', ()=>{
   // Hero video fallback: hide video if not supported
   const hv = document.getElementById('heroVideo'); if(hv){ hv.addEventListener('error', ()=>{ hv.style.display='none'; document.querySelector('.hero-overlay').style.background='linear-gradient(90deg,rgba(0,0,0,.35),rgba(0,0,0,.05))' }) }
 });
+
+// Dynamically load GSAP + ScrollTrigger and initialize hero animations + custom cursor
+(function loadGsap(){
+  function loadScript(src, cb){ const s=document.createElement('script'); s.src=src; s.onload=cb; document.head.appendChild(s); }
+  loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', ()=>{
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js', initGsap);
+  });
+  function initGsap(){
+    try{ gsap.registerPlugin(ScrollTrigger); }catch(e){}
+    // simple hero neon pulse
+    if(window.gsap){
+      gsap.to('.neon-title',{textShadow:'0 0 24px rgba(0,230,255, .9)',repeat:-1,yoyo:true,duration:2,ease:'sine.inOut'});
+
+      // product reveal using ScrollTrigger for any .product-card
+      gsap.utils.toArray('.product-card').forEach((card)=>{
+        gsap.from(card,{y:30,opacity:0,duration:0.7,scrollTrigger:{trigger:card, start:'top 85%'}});
+      });
+    }
+  }
+
+  // custom cursor movement
+  const cursor = document.getElementById('cursor');
+  if(cursor){ document.addEventListener('mousemove', e=>{ cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; }); }
+
+  // simple neon canvas background (moving gradient blobs)
+  const canvas = document.getElementById('neonCanvas');
+  if(canvas){ const ctx = canvas.getContext('2d'); function resize(){ canvas.width = canvas.clientWidth; canvas.height = canvas.clientHeight; } resize(); window.addEventListener('resize', resize);
+    let t=0; function draw(){ t+=0.01; ctx.clearRect(0,0,canvas.width,canvas.height); const grd = ctx.createLinearGradient(0,0,canvas.width,canvas.height); grd.addColorStop(0,'rgba(0,230,255,' + (0.2 + Math.abs(Math.sin(t))*0.2) + ')'); grd.addColorStop(1,'rgba(255,45,149,' + (0.12 + Math.abs(Math.cos(t))*0.12) + ')'); ctx.fillStyle = grd; ctx.fillRect(0,0,canvas.width,canvas.height); requestAnimationFrame(draw); } draw(); }
+})();

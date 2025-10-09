@@ -5,6 +5,8 @@ What's new in this release
 - Products: premium curated product data, quick view modal, wishlist, and animated add-to-cart.
 - Cart & Wishlist persisted in `localStorage`.
 
+Note: The cart now persists product options (size/color) using composite keys in localStorage. The product page uses a fly-to-cart animation when GSAP is available.
+
 Notes about included extras
 - `assets/videos/hero-loop.mp4` is referenced by the hero; provide a short looped MP4 for best experience. The site gracefully hides the video if not present.
 - For production, replace JS-based modals and client-side cart with secure server-backed endpoints and payment providers.
