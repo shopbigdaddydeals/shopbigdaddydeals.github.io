@@ -1,5 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="160" height="40" viewBox="0 0 160 40">
-  <rect width="160" height="40" rx="8" fill="#111" />
-  <text x="14" y="26" fill="#ffdca3" font-family="Poppins, Arial" font-weight="700" font-size="18">BigDaddy</text>
-  <text x="106" y="26" fill="#fff" font-family="Poppins, Arial" font-weight="700" font-size="18">Deals</text>
+  <!-- Circle background -->
+  <rect width="160" height="40" rx="8" fill="#fff"/>
+  <!-- Minimal glasses-face mark on left -->
+  <g transform="translate(8,2)">
+    <circle cx="20" cy="18" r="16" fill="#f8f6f2" />
+    <g stroke="#0b1020" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(4,2)">
+      <path d="M6 18a5 5 0 1 1 10 0" />
+      <path d="M26 18a5 5 0 1 0 10 0" />
+      <path d="M16 18h8" />
+    </g>
+  </g>
+  <!-- Brand text -->
+  <text x="60" y="26" fill="#0b1020" font-family="Poppins, Arial" font-weight="700" font-size="16">BigDaddy</text>
+  <text x="132" y="26" fill="#b98b35" font-family="Poppins, Arial" font-weight="700" font-size="14">Deals</text>
 </svg>
