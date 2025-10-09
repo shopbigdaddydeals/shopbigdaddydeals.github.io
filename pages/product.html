@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product — BigDaddy Deals</title>
+  <link href="../css/main.css" rel="stylesheet">
+</head>
+<body>
+  <header class="site-nav container"><a href="../index.html" class="brand">BigDaddy Deals</a></header>
+  <main class="container product-page">
+    <div class="product-detail">
+      <div class="gallery">
+        <img id="pdImage" src="../images/product-placeholder.svg" alt="Product image">
+      </div>
+      <div class="details">
+        <h1 id="pdTitle">Product Title</h1>
+        <p id="pdDesc">Product description goes here. Feature bullets and details.</p>
+        <div class="price" id="pdPrice">$0.00</div>
+        <div class="options">
+          <label>Size <select id="pdSize"><option>S</option><option>M</option><option>L</option></select></label>
+          <label>Color <select id="pdColor"><option>Black</option><option>Gold</option></select></label>
+        </div>
+        <div class="actions">
+          <button id="addToCartBtn" class="btn-cta">Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="../js/products.js" defer></script>
+  <script src="../js/cart.js" defer></script>
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

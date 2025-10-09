@@ -1,0 +1,65 @@
+/* Main stylesheet for BigDaddy Deals template */
+:root{
+  --bg:#fff;
+  --page-bg:#f8f8f9;
+  --accent:#b98b35; /* gold-ish */
+  --muted:#6b7280;
+  --radius:12px;
+  --container:1100px;
+}
+*{box-sizing:border-box}
+body{font-family:'Poppins',system-ui,Segoe UI,Arial;line-height:1.45;margin:0;background:var(--page-bg);color:#111}
+.container{max-width:var(--container);margin:0 auto;padding:1rem}
+
+/* Preloader */
+.preloader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#fff;z-index:9999}
+.spinner{width:48px;height:48px;border-radius:50%;border:6px solid #eee;border-top-color:var(--accent);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Nav */
+.site-nav{background:var(--bg);position:sticky;top:0;z-index:50;border-bottom:1px solid #eee}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
+.brand{display:flex;gap:.5rem;align-items:center;text-decoration:none;color:inherit}
+.logo-img{height:36px}
+.nav-links a{margin:0 .6rem;text-decoration:none;color:#111}
+.nav-actions{display:flex;gap:.5rem;align-items:center}
+.hamburger{display:none}
+
+/* Hero */
+.hero{display:flex;gap:2rem;align-items:center;padding:3rem 0}
+.hero-left{flex:1}
+.hero-title{font-size:2rem;margin:0 0 .5rem}
+.hero-sub{color:var(--muted);margin:0 0 1rem}
+.btn-cta{background:var(--accent);color:#fff;padding:.6rem 1rem;border-radius:10px;text-decoration:none;border:none}
+.btn-ghost{background:transparent;border:1px solid #ddd;padding:.5rem 1rem;border-radius:10px}
+.hero-right img{max-width:420px;width:100%}
+.hero-animated{margin-top:1rem;color:var(--accent);font-weight:700}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.product-card{background:var(--bg);padding:1rem;border-radius:12px;box-shadow:0 6px 18px rgba(12,13,18,.06);display:flex;flex-direction:column}
+.product-thumb{height:180px;background:#f3f4f6;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.product-title{font-weight:600;margin:0 0 .25rem}
+.product-price{color:var(--accent);font-weight:700}
+.product-actions{margin-top:auto;display:flex;gap:.5rem}
+
+/* Newsletter */
+.newsletter{background:linear-gradient(90deg,#fff,#f9f7f2);padding:1.5rem;margin:2rem 0;border-radius:12px}
+.newsletter-form{display:flex;gap:.5rem}
+.newsletter-form input{flex:1;padding:.6rem;border-radius:8px;border:1px solid #e8e8e8}
+
+/* Footer */
+.site-footer{padding:2rem 0;background:var(--bg);margin-top:2rem}
+.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.muted{color:var(--muted)}
+
+/* Utility */
+.btn-link{background:transparent;border:1px solid #eee;padding:.4rem .6rem;border-radius:8px;text-decoration:none}
+
+/* Forms */
+input,textarea,select{padding:.6rem;border-radius:8px;border:1px solid #e6e6e6;width:100%}
+
+/* Simple responsive rules */
+@media (max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}.hero-right{display:none}}
+@media (max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}.nav-links{display:none}.hamburger{display:block}}
+@media (max-width:420px){.grid{grid-template-columns:1fr}.hero{padding:1.5rem 0}}

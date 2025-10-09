@@ -1,96 +1,124 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BigDaddy Deals — Home</title>
-  <meta name="description" content="BigDaddy Deals — Great deals every day." />
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <a href="#"> <span class="logo">BigDaddy</span> <span class="tag">Deals</span></a>
-      </div>
-      <div class="search">
-        <input id="searchInput" type="search" placeholder="Search products, categories..." />
-      </div>
-      <div class="actions">
-        <button id="cartToggle" class="cart-btn" aria-label="Open cart">
-          Cart <span id="cartCount" class="cart-count">0</span>
-        </button>
-      </div>
-    </div>
-  </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BigDaddy Deals — Premium Deals Everyday</title>
+    <meta name="description" content="BigDaddy Deals — curated premium deals on electronics, fashion, home and more." />
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
 
-  <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1>Deals that make you smile</h1>
-          <p>Shop top categories and find daily discounts on electronics, home goods, fashion and more.</p>
-          <a class="btn-primary" href="#products">Shop Now</a>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 (optional, used for quick responsive utilities) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader" aria-hidden="false">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="site-nav">
+      <div class="nav-inner container">
+        <a class="brand" href="index.html">
+          <img src="images/logo.svg" alt="BigDaddy Deals logo" class="logo-img">
+          <span class="brand-text">BigDaddy <small>Deals</small></span>
+        </a>
+        <nav class="nav-links" id="mainNav">
+          <a href="index.html">Home</a>
+          <a href="pages/shop.html">Shop</a>
+          <a href="pages/about.html">About</a>
+          <a href="pages/contact.html">Contact</a>
+          <a href="pages/login.html" class="btn-link">Login</a>
+        </nav>
+        <div class="nav-actions">
+          <button id="searchBtn" class="icon-btn" aria-label="Search">🔍</button>
+          <a href="pages/cart.html" class="icon-btn">🛒 <span id="navCartCount" class="badge">0</span></a>
+          <button id="menuToggle" class="hamburger" aria-label="Menu">☰</button>
         </div>
-        <div class="hero-image" aria-hidden="true">
-          <!-- decorative -->
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero container">
+      <div class="hero-left">
+        <h1 class="hero-title">Premium deals. Everyday savings.</h1>
+        <p class="hero-sub">Discover top products handpicked for value and quality. New drops daily.</p>
+        <div class="hero-cta">
+          <a href="pages/shop.html" class="btn-cta">Shop Now</a>
+          <a href="#newsletter" class="btn-ghost">Subscribe</a>
         </div>
+        <div class="hero-animated">
+          <span id="typed">Electronics</span>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="images/hero-product.svg" alt="Featured product"/>
       </div>
     </section>
 
-    <section class="featured container">
-      <div class="section-header">
+    <!-- Featured products preview -->
+    <section class="featured container" id="featured">
+      <div class="section-head">
         <h2>Featured Products</h2>
-        <div class="filters">
-          <select id="categoryFilter">
-            <option value="all">All categories</option>
-            <option value="electronics">Electronics</option>
-            <option value="home">Home</option>
-            <option value="fashion">Fashion</option>
-            <option value="toys">Toys</option>
-          </select>
+        <a href="pages/shop.html" class="view-all">View all</a>
+      </div>
+      <div id="featuredGrid" class="grid"></div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="newsletter" class="newsletter container">
+      <div class="newsletter-inner">
+        <h3>Join the BigDaddy mailing list</h3>
+        <form id="newsletterForm" class="newsletter-form">
+          <input type="email" name="email" placeholder="Your email" required>
+          <button type="submit" class="btn-cta">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <img src="images/logo-footer.svg" alt="BigDaddy Deals" style="height:34px">
+          <p class="muted">Premium deals curated daily. Secure checkout &amp; fast delivery.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="pages/about.html">About Us</a>
+          <a href="pages/privacy.html">Privacy Policy</a>
+          <a href="pages/terms.html">Terms</a>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <a href="pages/contact.html">Contact</a>
+          <a href="pages/login.html">Account</a>
+        </div>
+        <div>
+          <h4>Follow</h4>
+          <div class="socials">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="YouTube">YT</a>
+            <a href="#" aria-label="X">X</a>
+          </div>
         </div>
       </div>
-
-      <div id="products" class="product-grid" aria-live="polite">
-        <!-- products rendered by JS -->
+      <div class="container footer-bottom">
+        <p>&copy; <span id="currentYear"></span> BigDaddy Deals — All rights reserved.</p>
       </div>
-    </section>
+    </footer>
 
-    <section class="about container">
-      <h3>Why shop with BigDaddy Deals?</h3>
-      <ul class="benefits">
-        <li>Curated deals across trusted brands</li>
-        <li>Fast shipping and easy returns</li>
-        <li>Secure checkout and friendly support</li>
-      </ul>
-    </section>
-  </main>
-
-  <aside id="cartSidebar" class="cart-sidebar" aria-hidden="true">
-    <div class="cart-header">
-      <h3>Your Cart</h3>
-      <button id="closeCart" aria-label="Close cart">×</button>
-    </div>
-    <div id="cartItems" class="cart-items">
-      <!-- cart items -->
-    </div>
-    <div class="cart-footer">
-      <div class="cart-summary">
-        <span>Total</span>
-        <strong id="cartTotal">$0.00</strong>
-      </div>
-      <button id="checkoutBtn" class="btn-primary">Checkout</button>
-    </div>
-  </aside>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> BigDaddy Deals — All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="app.js" defer></script>
-</body>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/products.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/validation.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </body>
 </html>
 

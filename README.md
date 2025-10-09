@@ -1,30 +1,39 @@
 # BigDaddy Deals — Static E‑commerce Template
 
-This repository contains a lightweight, responsive static e‑commerce template for a fictional company "BigDaddy Deals". It's intended as a starting point you can customize and extend.
+This repository contains a multi-page, responsive static e‑commerce template for a fictional company "BigDaddy Deals". It's built with HTML5, CSS3, and vanilla JavaScript (optionally Bootstrap 5 is included for utilities). Use this as a starting point for a real storefront.
 
 What's included
-- `index.html` — homepage with product grid, search, and cart sidebar
-- `styles.css` — responsive styles
-- `app.js` — client-side product rendering and simple cart stored in `localStorage`
+- `index.html` — homepage with hero, animated text, featured products, and newsletter CTA
+- `pages/` — additional pages: `shop.html`, `product.html`, `cart.html`, `checkout.html`, `login.html`, `signup.html`, `about.html`, `contact.html`, `privacy.html`, `terms.html`
+- `css/` — `main.css` and `responsive.css` (layout and responsive styles)
+- `js/` — `products.js` (sample product data), `cart.js` (localStorage cart), `validation.js` (form checks), `main.js` (UI interactions)
+- `images/` — SVG placeholder assets (logo, product placeholders, favicon)
+
+Features
+- Responsive, modern, minimalist design (black, white, gold color accents)
+- Sticky navbar, mobile hamburger menu
+- Product grid with hover and CTA
+- Product detail page with options
+- Cart persisted in `localStorage` (add/remove/update qty)
+- Checkout page with shipping/payment form (demo)
+- Login/Signup forms with show/hide password and client-side validation
+- Newsletter subscription form (demo) and preloader animation
 
 How to view locally (Windows PowerShell)
-1. Open the folder in VS Code or a file explorer.
-2. The easiest way is to open `index.html` directly in your browser by double-clicking it.
-3. For a better local experience (recommended), run a simple local server. In PowerShell run:
+1. Open the project folder in VS Code or File Explorer.
+2. It's best to serve the files over a local HTTP server. If you have Python 3 installed, run in PowerShell:
 
 ```powershell
-# using Python 3 (if installed)
+cd 'c:\Users\devva\OneDrive\Documents\GitHub\BigDaddy\shopbigdaddydeals.github.io'
 python -m http.server 8000
-# or, if you have Node.js installed, use a simple server like 'serve' or 'http-server'
 ```
 
-Then open http://localhost:8000 in your browser.
+3. Open http://localhost:8000 in your browser. Navigate the pages under `/pages`.
 
-Next steps / ideas
-- Replace placeholder images with real product images and thumbnails.
-- Integrate a backend or headless commerce API for real product data and checkout.
-- Add authentication, user accounts, and order history.
-- Add unit tests and build tooling if you adopt a framework.
+Notes & next steps
+- Replace the placeholder SVG images in `/images` with real product photography.
+- Integrate a backend or headless commerce API for real product data and secure checkout.
+- Add accessibility improvements (ARIA landmarks, keyboard nav) and unit/integration tests.
 
 License: MIT (use and modify freely)
 # shopbigdaddydeals.github.io

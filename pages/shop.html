@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shop — BigDaddy Deals</title>
+    <link href="../css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Simple header include (kept minimal for template) -->
+    <header class="site-nav container">
+      <a href="../index.html" class="brand">BigDaddy Deals</a>
+    </header>
+
+    <main class="container shop-page">
+      <div class="page-head">
+        <h1>Shop</h1>
+        <div class="filters">
+          <select id="shopCategory">
+            <option value="all">All</option>
+            <option value="electronics">Electronics</option>
+            <option value="home">Home</option>
+            <option value="fashion">Fashion</option>
+            <option value="toys">Toys</option>
+          </select>
+          <input id="shopSearch" type="search" placeholder="Search products...">
+        </div>
+      </div>
+      <div id="shopGrid" class="grid products-grid"></div>
+    </main>
+
+    <script src="../js/products.js" defer></script>
+    <script src="../js/cart.js" defer></script>
+    <script src="../js/main.js" defer></script>
+  </body>
+</html>

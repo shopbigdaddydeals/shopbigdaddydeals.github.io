@@ -1,0 +1,5 @@
+/* Additional responsive tweaks */
+@media (max-width:700px){
+  .hero-title{font-size:1.4rem}
+  .hero-sub{font-size:.95rem}
+}

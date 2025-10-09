@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout — BigDaddy Deals</title>
+  <link href="../css/main.css" rel="stylesheet">
+</head>
+<body>
+  <header class="site-nav container"><a href="../index.html" class="brand">BigDaddy Deals</a></header>
+  <main class="container checkout-page">
+    <h1>Checkout</h1>
+    <form id="checkoutForm" class="checkout-form">
+      <fieldset>
+        <legend>Shipping</legend>
+        <input name="fullname" placeholder="Full name" required>
+        <input name="address" placeholder="Address" required>
+        <input name="city" placeholder="City" required>
+        <input name="postal" placeholder="Postal code" required>
+      </fieldset>
+      <fieldset>
+        <legend>Payment</legend>
+        <label><input type="radio" name="payment" value="card" checked> Card</label>
+        <label><input type="radio" name="payment" value="cod"> Cash on delivery</label>
+      </fieldset>
+      <div class="order-summary">Order total: <span id="orderTotal">$0.00</span></div>
+      <button type="submit" class="btn-cta">Place Order</button>
+    </form>
+  </main>
+  <script src="../js/validation.js" defer></script>
+  <script src="../js/cart.js" defer></script>
+  <script src="../js/main.js" defer></script>
+</body>
+</html>
