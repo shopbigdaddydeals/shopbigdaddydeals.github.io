@@ -49,6 +49,7 @@ p,small,li,span{font-weight:400}
 
 @media(max-width:900px){.photo-slideshow .slideshow-inner{height:220px}} 
 @media(max-width:600px){.photo-slideshow{padding:1rem 0}.photo-slideshow .slideshow-inner{height:160px;border-radius:10px}}
+@media(max-width:700px){.nav-links.nav-boxed{flex-wrap:wrap;justify-content:center;padding:.4rem}.nav-links.nav-boxed a{padding:.45rem .6rem}}
 
 
 /* Model photos */
