@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const videosRoot = document.createElement('section'); videosRoot.className='videos-grid container';
   for(let i=0;i<3;i++){
     const vwrap = document.createElement('div'); vwrap.className='video-placeholder';
-    const v = document.createElement('video'); v.autoplay=true; v.muted=true; v.loop=true; v.playsInline=true; v.setAttribute('aria-hidden','true');
-    // small colored placeholder - will be replaced with real src later
-    v.innerHTML = '';
+    const v = document.createElement('video'); v.autoplay=true; v.muted=true; v.loop=true; v.playsInline=true; v.setAttribute('aria-hidden','true'); v.setAttribute('playsinline','');
+    // Use provided video for the first placeholder
+    if(i===0){ const src=document.createElement('source'); src.src='/assets/videos/your-paragraph-text.mp4'; src.type='video/mp4'; v.appendChild(src); }
     vwrap.appendChild(v); videosRoot.appendChild(vwrap);
   }
   document.querySelector('body').insertBefore(videosRoot, document.querySelector('.featured'));
