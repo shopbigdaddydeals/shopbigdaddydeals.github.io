@@ -1,5 +1,5 @@
 What's new in this release
-- Luxury redesign: soft off-white palette, Playfair Display headings, and refined spacing.
+- Luxury redesign: soft off-white palette, Century Gothic typography, and refined spacing.
 - Hero: background video support with graceful fallback and animated CTA.
 - Animations: AOS-like reveals and subtle GSAP-style interactions (vanilla IntersectionObserver-driven).
 - Products: premium curated product data, quick view modal, wishlist, and animated add-to-cart.

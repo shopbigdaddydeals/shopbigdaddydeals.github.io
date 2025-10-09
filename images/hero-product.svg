@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="420" height="300" viewBox="0 0 420 300">
   <rect width="420" height="300" rx="20" fill="#fff" stroke="#eee"/>
   <circle cx="210" cy="140" r="80" fill="#f9f6f0" stroke="#e7d9b3"/>
-  <text x="210" y="155" text-anchor="middle" fill="#b98b35" font-family="Poppins" font-size="20">Featured</text>
+  <text x="210" y="155" text-anchor="middle" fill="#b98b35" font-family="\"Century Gothic\",CenturyGothic,AppleGothic,Helvetica,Arial,sans-serif" font-size="20">Featured</text>
 </svg>

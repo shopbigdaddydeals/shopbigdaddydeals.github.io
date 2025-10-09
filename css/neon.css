@@ -8,9 +8,9 @@
 body{background:var(--bg-dark);color:#fff}
 .neon-hero{position:relative;min-height:84vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
-.glitch-layer{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Orbitron,monospace;font-weight:700;font-size:clamp(24px,5vw,48px);color:var(--neon-pink);opacity:.08}
+.glitch-layer{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Century Gothic",CenturyGothic,AppleGothic,Helvetica,Arial,sans-serif;font-weight:700;font-size:clamp(24px,5vw,48px);opacity:.08}
 .hero-inner{position:relative;z-index:5;text-align:center}
-.neon-title{font-family:Orbitron, sans-serif;font-weight:700;font-size:clamp(28px,6vw,72px);letter-spacing:.02em;color:#fff;text-transform:uppercase;text-shadow:0 0 12px rgba(0,230,255,.06)}
+.neon-title{font-family:"Century Gothic",CenturyGothic,AppleGothic,Helvetica,Arial,sans-serif;font-weight:700;font-size:clamp(28px,6vw,72px);letter-spacing:.02em;color:#fff;text-transform:uppercase}
 .neon-sub{color:var(--muted);margin:.6rem 0 1.2rem}
 .btn-hype{background:linear-gradient(90deg,var(--neon-blue),var(--neon-pink));padding:.8rem 1.4rem;border-radius:12px;color:#000;font-weight:700;text-decoration:none;margin-right:.6rem;box-shadow:0 8px 30px rgba(0,230,255,.06)}
 .btn-drip{background:transparent;border:2px solid rgba(255,255,255,.06);padding:.6rem 1.2rem;border-radius:12px;color:#fff;text-decoration:none}

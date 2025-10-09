@@ -11,6 +11,6 @@
     </g>
   </g>
   <!-- Brand text -->
-  <text x="60" y="26" fill="#0b1020" font-family="Poppins, Arial" font-weight="700" font-size="16">BigDaddy</text>
-  <text x="132" y="26" fill="#b98b35" font-family="Poppins, Arial" font-weight="700" font-size="14">Deals</text>
+  <text x="60" y="26" fill="#0b1020" font-family="\"Century Gothic\",CenturyGothic,AppleGothic,Helvetica,Arial,sans-serif" font-weight="700" font-size="16">BigDaddy</text>
+  <text x="132" y="26" fill="#b98b35" font-family="\"Century Gothic\",CenturyGothic,AppleGothic,Helvetica,Arial,sans-serif" font-weight="700" font-size="14">Deals</text>
 </svg>

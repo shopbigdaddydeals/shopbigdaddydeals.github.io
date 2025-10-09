@@ -7,8 +7,12 @@
   --container:1200px;
   --radius:14px;
 }
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-body{font-family:'Inter',system-ui,Segoe UI,Arial; background:var(--white); color:var(--text);}
+/* Using Century Gothic as primary font family */
+body{font-family:"Century Gothic",CenturyGothic,AppleGothic,Helvetica,Arial,sans-serif; background:var(--white); color:var(--text); font-weight:400; letter-spacing:0.01em}
+
+/* Headings and major text */
+h1,h2,h3,h4,h5,h6,button,a.btn,.btn-cta{font-weight:700}
+p,small,li,span{font-weight:400}
 .container{max-width:var(--container);margin:0 auto;padding:1rem}
 
 /* Header tweaks for minimalist look */
