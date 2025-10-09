@@ -1,7 +1,6 @@
 /* main.js - UI interactions and small enhancements */
 document.addEventListener('DOMContentLoaded', ()=>{
-  // Preloader
-  const pre = document.getElementById('preloader'); if(pre) setTimeout(()=>pre.style.display='none',700);
+  // Preloader will be hidden on full load (see window.load handler)
 
   // Year
   const y = document.getElementById('currentYear'); if(y) y.textContent = new Date().getFullYear();
@@ -34,6 +33,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   // Hero video fallback: hide video if not supported
   const hv = document.getElementById('heroVideo'); if(hv){ hv.addEventListener('error', ()=>{ hv.style.display='none'; document.querySelector('.hero-overlay').style.background='linear-gradient(90deg,rgba(0,0,0,.35),rgba(0,0,0,.05))' }) }
+});
+
+// Hide preloader on window load with smooth fade
+window.addEventListener('load', ()=>{
+  const pre = document.getElementById('preloader');
+  if(!pre) return;
+  // If GSAP is ready, use it for smooth fade; otherwise use CSS class
+  if(window.gsap){
+    gsap.to(pre,{opacity:0,duration:0.7,onComplete:()=>{ pre.style.display='none'; }});
+  } else {
+    pre.classList.add('fade-out'); setTimeout(()=>{ pre.style.display='none'; },700);
+  }
 });
 
 // Dynamically load GSAP + ScrollTrigger and initialize hero animations + custom cursor
