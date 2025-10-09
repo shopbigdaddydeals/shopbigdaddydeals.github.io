@@ -1,1 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BigDaddy Deals — Home</title>
+  <meta name="description" content="BigDaddy Deals — Great deals every day." />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="#"> <span class="logo">BigDaddy</span> <span class="tag">Deals</span></a>
+      </div>
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Search products, categories..." />
+      </div>
+      <div class="actions">
+        <button id="cartToggle" class="cart-btn" aria-label="Open cart">
+          Cart <span id="cartCount" class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Deals that make you smile</h1>
+          <p>Shop top categories and find daily discounts on electronics, home goods, fashion and more.</p>
+          <a class="btn-primary" href="#products">Shop Now</a>
+        </div>
+        <div class="hero-image" aria-hidden="true">
+          <!-- decorative -->
+        </div>
+      </div>
+    </section>
+
+    <section class="featured container">
+      <div class="section-header">
+        <h2>Featured Products</h2>
+        <div class="filters">
+          <select id="categoryFilter">
+            <option value="all">All categories</option>
+            <option value="electronics">Electronics</option>
+            <option value="home">Home</option>
+            <option value="fashion">Fashion</option>
+            <option value="toys">Toys</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="products" class="product-grid" aria-live="polite">
+        <!-- products rendered by JS -->
+      </div>
+    </section>
+
+    <section class="about container">
+      <h3>Why shop with BigDaddy Deals?</h3>
+      <ul class="benefits">
+        <li>Curated deals across trusted brands</li>
+        <li>Fast shipping and easy returns</li>
+        <li>Secure checkout and friendly support</li>
+      </ul>
+    </section>
+  </main>
+
+  <aside id="cartSidebar" class="cart-sidebar" aria-hidden="true">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="closeCart" aria-label="Close cart">×</button>
+    </div>
+    <div id="cartItems" class="cart-items">
+      <!-- cart items -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-summary">
+        <span>Total</span>
+        <strong id="cartTotal">$0.00</strong>
+      </div>
+      <button id="checkoutBtn" class="btn-primary">Checkout</button>
+    </div>
+  </aside>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> BigDaddy Deals — All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
 
