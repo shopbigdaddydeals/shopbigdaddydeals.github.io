@@ -33,7 +33,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const vwrap = document.createElement('div'); vwrap.className='video-placeholder';
     const v = document.createElement('video'); v.autoplay=true; v.muted=true; v.loop=true; v.playsInline=true; v.setAttribute('aria-hidden','true'); v.setAttribute('playsinline','');
     // Use provided video for the first placeholder
-    if(i===0){ const src=document.createElement('source'); src.src='/assets/videos/your-paragraph-text.mp4'; src.type='video/mp4'; v.appendChild(src); }
+    if(i===0){
+      const src=document.createElement('source'); src.src='/assets/videos/your-paragraph-text.mp4'; src.type='video/mp4'; v.appendChild(src);
+      // preload metadata and provide a simple poster (fallback to an existing image)
+      v.preload = 'metadata';
+      v.poster = '/images/hero-product.svg';
+      // try to start loading and play (some browsers require play() on user interaction or when visible)
+      try{ v.load(); const p = v.play(); if(p && p.catch){ p.catch(err=>{ console.debug('Video play prevented (will attempt on visibility):', err); }); }}catch(e){ console.debug('video load/play error', e); }
+    }
     vwrap.appendChild(v); videosRoot.appendChild(vwrap);
   }
   document.querySelector('body').insertBefore(videosRoot, document.querySelector('.featured'));
@@ -45,7 +52,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
   document.querySelector('body').insertBefore(modelsSection, document.querySelector('#newsletter'));
 
   // Intersection observer for videos and models to add reveal class
-  const io = new IntersectionObserver(entries=>{ entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('visible'); const v = en.target.querySelector('video'); if(v && !v.src){ /* placeholder - keep empty */ } } }) },{threshold:0.18});
+  const io = new IntersectionObserver(entries=>{ entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('visible'); const v = en.target.querySelector('video'); if(v){ // ensure video plays when visible
+        if(v.paused){ v.play().catch(err=>{ console.debug('video play blocked until user interaction', err); }); }
+      }
+    }
+  }) },{threshold:0.18});
   document.querySelectorAll('.video-placeholder,.model-item,.slogan-wrap').forEach(el=>io.observe(el));
 
   // footer flag helper
